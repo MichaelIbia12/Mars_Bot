@@ -1,0 +1,31 @@
+{
+    "vocabulary": {
+        "data": {
+            "greeting": [
+                ["hi", "hello", "whatsup", "hey", "Hi there!", "Hey, how's it going?", "Good evening!", "Good morning!", "Good night!", "Nice to see you!"],
+                ["hello", "hi", "Hello! I'm doing well, thank you. How about you?", "Hi! I'm good, thanks. How are you doing?", "Hey! Everything's great. How about you?", "Good day!"]
+            ],
+            "CHY": [
+                ["how are you", "how is your day going", "how is your day", "How are you?", "How's it going?", "Are you doing okay?", "Is everything alright with you?"],
+                ["fine thank you", "I'm doing well, thank you", "I'm good, thanks for asking", "I'm alright, thanks", "Everything's fine with me"]
+            ],
+            "current location": [
+                ["where am i", "where am i located"],
+                ["nigeria"]
+            ],
+            "personal_name": [
+                ["what is your name", "What's your name?", "May I know your name, please?", "Could you introduce yourself?", "What do people call you?", "Who am I speaking with?"],
+                ["My name is", "I go by", "You can call me"]
+            ],
+            "information_and_knowledge": [
+                ["Tell me about", "Explain", "What is", "Give me information on", "Teach me about", "Define", "I need to know about"],
+                ["Sure, here's some information:", "I can explain that:", "Certainly, it's about:", "Here's what I know:", "I can provide information on that:", "Let me define it for you:"]
+            ],
+
+            "recommendations": [
+                ["Can you recommend", "What do you suggest", "Any recommendations for", "I'm looking for", "Suggest a", "What's your recommendation for", "Recommend me a"],
+                ["I recommend", "You might like", "How about", "I suggest", "Consider", "I'd recommend trying", "You could check out"]
+            ]
+        }
+    }
+}
