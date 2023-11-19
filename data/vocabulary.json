@@ -2,7 +2,7 @@
     "vocabulary": {
         "data": {
             "greeting": [
-                ["hi", "hello", "whatsup", "hey", "Hi there!", "Hey, how's it going?", "Good evening!", "Good morning!", "Good night!", "Nice to see you!"],
+                ["hi", "hello", "hey", "what's up", "Hi there!", "Hey, how's it going?", "Good evening!", "Good morning!", "Good night!", "Nice to see you!"],
                 ["hello", "hi", "Hello! I'm doing well, thank you. How about you?", "Hi! I'm good, thanks. How are you doing?", "Hey! Everything's great. How about you?", "Good day!"]
             ],
             "CHY": [
@@ -10,8 +10,8 @@
                 ["fine thank you", "I'm doing well, thank you", "I'm good, thanks for asking", "I'm alright, thanks", "Everything's fine with me"]
             ],
             "current location": [
-                ["where am i", "where am i located"],
-                ["nigeria"]
+                ["where am I", "where am I located"],
+                ["Nigeria"]
             ],
             "personal_name": [
                 ["what is your name", "What's your name?", "May I know your name, please?", "Could you introduce yourself?", "What do people call you?", "Who am I speaking with?"],
@@ -21,10 +21,17 @@
                 ["Tell me about", "Explain", "What is", "Give me information on", "Teach me about", "Define", "I need to know about"],
                 ["Sure, here's some information:", "I can explain that:", "Certainly, it's about:", "Here's what I know:", "I can provide information on that:", "Let me define it for you:"]
             ],
-
             "recommendations": [
                 ["Can you recommend", "What do you suggest", "Any recommendations for", "I'm looking for", "Suggest a", "What's your recommendation for", "Recommend me a"],
                 ["I recommend", "You might like", "How about", "I suggest", "Consider", "I'd recommend trying", "You could check out"]
+            ],
+            "weather": [
+                ["What's the weather like", "How's the weather today", "Tell me about today's weather", "Is it going to rain today", "What's the forecast for today"],
+                ["The weather today is", "It's currently", "Expect", "There's a chance of", "Make sure to bring an umbrella"]
+            ],
+            "food_and_cuisine": [
+                ["Tell me about local food", "What's your favorite cuisine", "Recommend a restaurant", "Any good places to eat around here", "What should I cook for dinner"],
+                ["I enjoy", "My favorite cuisine is", "You might like", "There's a great restaurant called", "I'd recommend trying"]
             ]
         }
     }

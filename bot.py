@@ -11,8 +11,7 @@ import threading
 print(green("Updating/Installing Nltk Packages"))
 
 nltk.download('averaged_perceptron_tagger') 
-nltk.download('punkt')   
-nltk.download('words')         
+nltk.download('punkt')            
 
 print(green("Initializing"))
 
@@ -25,12 +24,11 @@ class Mars():
         self.age = 0
         self.name = 'Mars'
         self.vocabulary = data['vocabulary']['data']
-        self.dictionary = set(words.words())
+
 
     #engine responsinle for responding    
     def response_engine(self, txt:str):
         simplified_text = self.bulk_lemmatizer(txt)
-        print(simplified_text)
         statment_arr =  simplified_text.lower().split()
         prediction = self.prediction_engine(statment_arr)
         if prediction == 404:
@@ -55,22 +53,25 @@ class Mars():
     # engine responsible for pediction of statement type 
     def prediction_engine(self, l:list):
         #evaluating statment score
+
         prediction_list = []
+        
         for statment_type in self.vocabulary:
             prediction_score = 0
             for data in self.vocabulary[statment_type]:
                 for refrence_sentence in data:
                     for word in l:
-                        if word in refrence_sentence and word in self.dictionary:
+                        if word in refrence_sentence.lower().split(" "):
                             prediction_score += 1
-    
+
             prediction_list.append((statment_type, prediction_score)) 
+        
+
         main_scores = []
         for stastment_tupl in prediction_list:
              score = stastment_tupl[1]
              main_scores.append(score)
         
-        print(prediction_list)
         max_score = max(main_scores)
         if max_score == 0 :
             return 404
@@ -91,36 +92,47 @@ class Mars():
         pos_tags = nltk.pos_tag(txt_token)
         pos_arr = []
         
+        
         # pre-Noun prase
         for i in range(0 ,len(pos_tags)):
             if "VB" in pos_tags[i][1]:
                 word = lemmatizer.lemmatize(pos_tags[i][0], "v")
                 word_token = nltk.word_tokenize(word)
-                pos_arr.append(word_token)
+                pos_arr.append(word_token[0])
             elif "NN" in pos_tags[i][1]:
                 word = lemmatizer.lemmatize(pos_tags[i][0], "n")
                 word_token = nltk.word_tokenize(word)
-                pos_arr.append(word_token)
+                pos_arr.append(word_token[0])
             elif "JJ" in pos_tags[i][1]:
                 word = lemmatizer.lemmatize(pos_tags[i][0], "a")
                 word_token = nltk.word_tokenize(word)
-                pos_arr.append(word_token)
+                pos_arr.append(word_token[0])
             else:
-                pos_tags.append(pos_tags[i][1])
+                pos_arr.append(pos_tags[i][0])
+            print(pos_tags[i][0])
         
+       
         self.subject_finder(pos_arr)
-               
-        print(pos_tags, txt)
-        print(pos_arr)
+
         
-    def subject_finder(self, pos_list:list):
-        try:
-            verb = pos_list.index("VB")
-            preposition = pos_list.index("IN")
-            print(verb, preposition)
-        except ValueError:
-            print("VB,IN not found") 
-            
+    def subject_finder(self, pos_arr:list):
+        pos_token = nltk.pos_tag(pos_arr)
+        print(pos_token)
+        vb = []
+        cj = []
+        nn = []
+        starting_arr = null
+        
+        for i in range(0, len(pos_token)):
+            if "VB" in pos_token[i]:
+                vb.append(i)
+            if "IN" in pos_token[i]:
+                cj.append(i)
+        print(vb, cj)
+      
+        
+        
+        
     def bulk_lemmatizer(self, text:str):
         txt = []
         filtered_Arr = []
@@ -134,7 +146,7 @@ class Mars():
                     txt.append(verb_word)
                 elif len(noun_word) == len(verb_word):
                       txt.append(noun_word)
-        print(txt)
+
         for word in txt:
             if word not in filtered_Arr:
                 filtered_Arr.append(word)
@@ -147,7 +159,8 @@ class Mars():
 m = Mars()
 
 while True:
-    txt = input("#- ")
+    #txt = input("#- ")
+    txt = "tell me about guns"
     print("thinking")
-    time.sleep(1)
-    m.response_engine(txt)        
+    m.response_engine(txt)   
+    break    
