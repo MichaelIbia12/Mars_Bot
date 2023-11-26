@@ -18,7 +18,7 @@
                 ["My name is", "I go by", "You can call me"]
             ],
             "information_and_knowledge": [
-                ["Tell me about", "Explain", "What is", "Give me information on", "Teach me about", "Define", "I need to know about"],
+                ["Tell me about", "Explain", "What is", "Give me information on", "Teach me about", "Define", "I need to know about", "What do you know about", "What do you know"],
                 ["Sure, here's some information:", "I can explain that:", "Certainly, it's about:", "Here's what I know:", "I can provide information on that:", "Let me define it for you:"]
             ],
             "recommendations": [

@@ -8,13 +8,19 @@ from nltk.corpus import words
 from nltk.stem import WordNetLemmatizer
 import threading
 
+internet_connection = True
+
 print(green("Updating/Installing Nltk Packages"))
 
-nltk.download('averaged_perceptron_tagger') 
-nltk.download('punkt')            
-
-print(green("Initializing"))
-
+try:
+    requests.get("http://google.com")
+    nltk.download('averaged_perceptron_tagger') 
+    nltk.download('punkt')   
+    print(green("Initializing"))         
+except:
+    internet_connection = False
+    print(red("No internet connection"))
+    quit()
 file = open('data/vocabulary.json')
 data = json.load(file)
 lemmatizer = WordNetLemmatizer()
@@ -47,8 +53,13 @@ class Mars():
                     case "name":
                         response += " "+self.name
             if 'information' in personal_split:
-                self.information_extractor(txt)
-            print(green(response))
+                meaning = self.information_extractor(txt)
+                response += " "+ meaning
+            
+            if internet_connection:
+                print(green(response))
+            else:
+                print(red("no internet"))
     
     # engine responsible for pediction of statement type 
     def prediction_engine(self, l:list):
@@ -86,51 +97,39 @@ class Mars():
         bing = "https://www.bing.com/search?q="
         yahoo = "https://search.yahoo.com/search?p="
         summerization_api = "https://api.meaningcloud.com/summarization-1.0"
-        
-        # find the subject of the sentence
-        txt_token = nltk.word_tokenize(txt) 
-        pos_tags = nltk.pos_tag(txt_token)
-        pos_arr = []
-        
-        
-        # pre-Noun prase
-        for i in range(0 ,len(pos_tags)):
-            if "VB" in pos_tags[i][1]:
-                word = lemmatizer.lemmatize(pos_tags[i][0], "v")
-                word_token = nltk.word_tokenize(word)
-                pos_arr.append(word_token[0])
-            elif "NN" in pos_tags[i][1]:
-                word = lemmatizer.lemmatize(pos_tags[i][0], "n")
-                word_token = nltk.word_tokenize(word)
-                pos_arr.append(word_token[0])
-            elif "JJ" in pos_tags[i][1]:
-                word = lemmatizer.lemmatize(pos_tags[i][0], "a")
-                word_token = nltk.word_tokenize(word)
-                pos_arr.append(word_token[0])
-            else:
-                pos_arr.append(pos_tags[i][0])
-            print(pos_tags[i][0])
-        
        
-        self.subject_finder(pos_arr)
+        subjects = []
+        for data in self.vocabulary["information_and_knowledge"][0]:
+            if len(txt.split(data.lower())) >= 2:
+                 uknown, subject = txt.split(data.lower())
+                 subjects.append(subject.strip())
+            
 
-        
-    def subject_finder(self, pos_arr:list):
-        pos_token = nltk.pos_tag(pos_arr)
-        print(pos_token)
-        vb = []
-        cj = []
-        nn = []
-        starting_arr = null
-        
-        for i in range(0, len(pos_token)):
-            if "VB" in pos_token[i]:
-                vb.append(i)
-            if "IN" in pos_token[i]:
-                cj.append(i)
-        print(vb, cj)
-      
-        
+        if internet_connection:
+            dic_req = requests.get(dictionary_api+subjects[0]).json()
+            definition = dic_req[1]["meanings"][0]
+            partofspeach = definition['partOfSpeech']
+            definitions = []
+            example = []
+            for i in definition['definitions']:
+                definitions.append(i['definition'])
+                if 'example' in i:
+                    example.append(i['example'])
+            
+            meaning = f"""
+            {subjects[0]} : {partofspeach}
+            
+            1: {definitions[0]} 
+            example: {example[0]}
+            
+            2: {definitions[1]} 
+            example: {example[1]}
+            
+            """
+            
+            return meaning
+        else:
+            print(red("Please connect to an internet connection"))
         
         
     def bulk_lemmatizer(self, text:str):
@@ -160,7 +159,7 @@ m = Mars()
 
 while True:
     #txt = input("#- ")
-    txt = "tell me about guns"
+    txt = "define fishing"
     print("thinking")
     m.response_engine(txt)   
     break    
