@@ -94,16 +94,11 @@ class Mars():
         for data in self.vocabulary["information_and_knowledge"][0]:
             if len(txt.split(data.lower())) >= 2:
                 uknown, subject = txt.split(data.lower())
-                
-                if " a " in subject or " an " in subject:
-                    clean_subject_a = subject.split("a ")
-                    clean_subject_an = subject.split("an ")
-
-                    if len(clean_subject_a) > 1:
-                        subjects.append(clean_subject_a[1].strip())
-                    if len(clean_subject_an) > 1:
-
-                        subjects.append(clean_subject_an[1].strip())
+                subObj = subject.split(" ")
+                print(len(subObj), subObj[1])
+                if "a" == subObj[1] or "an" == subObj[1] and len(subObj) > 2 :
+                    print(subObj[2])
+                    subjects.append(subObj[2].strip())
                 else:
                     print(subject)
                     subjects.append(subject.strip())
