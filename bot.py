@@ -4,7 +4,7 @@ from simple_chalk import green, red
 import requests
 import nltk
 from nltk.stem import WordNetLemmatizer
-
+from bs4 import BeautifulSoup
 
 internet_connection = True
 
@@ -19,9 +19,11 @@ except:
     internet_connection = False
     print(red("No internet connection"))
     quit()
+
 file = open('data/vocabulary.json')
 data = json.load(file)
 lemmatizer = WordNetLemmatizer()
+DICTIONARYAPI = "https://api.dictionaryapi.dev/api/v2/entries/en/"
 
 
 class Mars():
@@ -88,37 +90,42 @@ class Mars():
             return prediction_list[max_score_index]
 
     def information_extractor(self, txt):
-
-        dictionary_api = "https://api.dictionaryapi.dev/api/v2/entries/en/"
-        google = "https://www.google.com"
-        bing = "https://www.bing.com/search?q="
-        yahoo = "https://search.yahoo.com/search?p="
-        summerization_api = "https://api.meaningcloud.com/summarization-1.0"
-
         subjects = []
         for data in self.vocabulary["information_and_knowledge"][0]:
             if len(txt.split(data.lower())) >= 2:
                 uknown, subject = txt.split(data.lower())
-                subjects.append(subject.strip())
+                
+                if " a " in subject or " an " in subject:
+                    clean_subject_a = subject.split("a ")
+                    clean_subject_an = subject.split("an ")
+
+                    if len(clean_subject_a) > 1:
+                        subjects.append(clean_subject_a[1].strip())
+                    if len(clean_subject_an) > 1:
+
+                        subjects.append(clean_subject_an[1].strip())
+                else:
+                    print(subject)
+                    subjects.append(subject.strip())
 
         if internet_connection:
-            dic_req = requests.get(dictionary_api+subjects[0]).json()
+            req = requests.get(DICTIONARYAPI+subjects[0])
 
-            if dic_req is dict and dic_req['title'] == "No Definitions Found":
-                print("Searching the web")
-
-                meaning = " "
-                return meaning
+            dic_req = req.json()
+            if type(dic_req) is dict and dic_req['title'] == "No Definitions Found":
+                return "You should try searching the web for that sorry"
             else:
                 definition = dic_req[0]["meanings"][0]
                 partofspeach = definition['partOfSpeech']
                 definitions = []
                 example = []
                 for i in definition['definitions']:
+
                     definitions.append(i['definition'])
                     if 'example' in i:
                         example.append(i['example'])
 
+            if len(example) > 1:
                 meaning = f"""
                 {subjects[0]} : {partofspeach}
                 
@@ -129,7 +136,16 @@ class Mars():
                 example: {example[1]}
                 
                 """
-
+                return meaning
+            else:
+                meaning = f"""
+                {subjects[0]} : {partofspeach}
+                
+                1: {definitions[0]} 
+                
+                2: {definitions[1]} 
+                
+                """
                 return meaning
         else:
             print(red("Please connect to an internet connection"))
