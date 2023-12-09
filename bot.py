@@ -20,7 +20,7 @@ except:
     print(red("No internet connection"))
     quit()
 
-file = open('data/vocabulary.json')
+file = open('data/data.json')
 data = json.load(file)
 lemmatizer = WordNetLemmatizer()
 DICTIONARYAPI = "https://api.dictionaryapi.dev/api/v2/entries/en/"
@@ -31,7 +31,10 @@ class Mars():
         self.age = 0
         self.name = 'Mars'
         self.vocabulary = data['vocabulary']['data']
-
+        self.fieldOfStudy = ["food","tech"]
+        self.fieldOfStudyKeywords = data['vocabulary']['fieldOfStudyKeyWords']
+        self.topic = ""
+        
     # engine responsinle for responding
 
     def response_engine(self, txt: str):
@@ -47,7 +50,10 @@ class Mars():
 
             randomInt = random.randrange(-1, len(response_arr))
             response = response_arr[randomInt]
-
+            
+            if self.topic not self.fieldOfStudy:
+                print('this is new')
+            
             if 'personal' in personal_split:
                 match personal_split[1]:
                     case "name":
@@ -66,7 +72,7 @@ class Mars():
         # evaluating statment score
 
         prediction_list = []
-
+        fieldList = []
         for statment_type in self.vocabulary:
             prediction_score = 0
             for data in self.vocabulary[statment_type]:
@@ -76,7 +82,27 @@ class Mars():
                             prediction_score += 1
 
             prediction_list.append((statment_type, prediction_score))
+            
+        for fieldArea in self.fieldOfStudyKeywords: 
+            fieldScore = 0  
+            for fieldKeyWord in self.fieldOfStudyKeywords[fieldArea]:
+                for word in l:
+                    if word in fieldKeyWord.lower().split(" "):
+                        fieldScore +=1
+                    else:
+                        pass        
+            fieldList.append((fieldArea, fieldScore))
+        
+        fieldScores = []
+        for stastment_tupl in fieldList:
+            score = stastment_tupl[1]
+            fieldScores.append(score)
 
+        fieldScore = max(fieldScores)
+        fieldIndex = fieldScores.index(fieldScore)
+        field = fieldList[fieldIndex]
+        self.topic = field[0]
+    
         main_scores = []
         for stastment_tupl in prediction_list:
             score = stastment_tupl[1]
@@ -88,19 +114,15 @@ class Mars():
         else:
             max_score_index = main_scores.index(max_score)
             return prediction_list[max_score_index]
-
     def information_extractor(self, txt):
         subjects = []
         for data in self.vocabulary["information_and_knowledge"][0]:
             if len(txt.split(data.lower())) >= 2:
                 uknown, subject = txt.split(data.lower())
                 subObj = subject.split(" ")
-                print(len(subObj), subObj[1])
                 if "a" == subObj[1] or "an" == subObj[1] and len(subObj) > 2 :
-                    print(subObj[2])
                     subjects.append(subObj[2].strip())
                 else:
-                    print(subject)
                     subjects.append(subject.strip())
 
         if internet_connection:
@@ -166,11 +188,16 @@ class Mars():
                 pass
 
         return " ".join(filtered_Arr)
-
+    
+    def recommendations(self):
+        pass
+    
 
 m = Mars()
 
 while True:
-    txt = input("#- ")
+    #txt = input("#- ")
+    txt = "what is technology"
     print("thinking")
     m.response_engine(txt)
+    break;

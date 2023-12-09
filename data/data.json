@@ -33,6 +33,23 @@
                 ["Tell me about local food", "What's your favorite cuisine", "Recommend a restaurant", "Any good places to eat around here", "What should I cook for dinner"],
                 ["I enjoy", "My favorite cuisine is", "You might like", "There's a great restaurant called", "I'd recommend trying"]
             ]
+        },
+        "fieldOfStudyKeyWords": {
+            "tech": [
+                "Technology", "Tech", "Tech news", "New technology", "What is technology", "Science and technology", "Latest technology", "Tech industry", "Future of technology", "Tech trends",
+                "Artificial intelligence (AI)", "Machine learning (ML)", "Deep learning", "Robotics", "Automation", "Blockchain", "Cryptocurrency", "Big data", "Internet of Things (IoT)", "Cloud computing",
+                "Cybersecurity", "Virtual reality (VR)", "Augmented reality (AR)", "3D printing", "5G", "Quantum computing", "Software", "Programming", "Coding", "Software development", "App development",
+                "Web development", "Mobile development", "Desktop software", "SaaS (Software as a Service)", "PaaS (Platform as a Service)", "IaaS (Infrastructure as a Service)", "Hardware", "Computers",
+                "Laptops", "Tablets", "Smartphones", "Wearables", "Smart homes", "Smart TVs", "Gaming consoles", "VR headsets", "AR glasses", "Innovation", "Disruption", "Digital transformation",
+                "User experience (UX)", "Design thinking", "Product management", "Agile", "Lean", "Startup", "Venture capital", "Tech giants"
+            ],
+            "food": [
+                "Food", "Cuisine", "Cooking", "Recipes", "Foodie", "Gastronomy", "Nutrition", "Healthy eating", "Diet", "Farm-to-table", "Local produce", "Organic", "Vegetarian", "Vegan", "Gluten-free", "Paleo",
+                "Keto", "Superfoods", "Meal prep", "Culinary", "Food trends", "Food culture", "International cuisine", "Food blogging", "Food photography", "Restaurant", "Fine dining", "Street food",
+                "Comfort food", "Desserts", "Baking", "Cookbooks", "Farmers' market", "Sustainable food", "Food science", "Gourmet", "Spices", "Flavors", "Taste", "Ingredients", "Cookware", "Kitchen gadgets",
+                "Cooking techniques", "Food festivals", "Wine", "Craft beer", "Mixology", "Coffee culture", "Tea", "Chocolate", "Snacks", "Food allergies", "Food safety", "Food industry", "Fast food",
+                "Culinary arts", "Home cooking", "Eating habits", "Meal planning", "Food and health", "Food documentaries"
+            ]
         }
     }
 }
