@@ -23,5 +23,5 @@ python bot.py
 # Buy a coffee
 
 <a href="https://www.buymeacoffee.com/mars.shall">
- <image src="svg/bmc-icon.svg" alt="Buy me a cofee" width="400">
+ <image src="/svg/bmc-icon.svg" alt="Buy me a cofee" width="400">
 </a>
