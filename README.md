@@ -2,9 +2,7 @@
 
 Hello, this is mars bot. he is a bot that can peform specific tasks for you.
 
-<br>
-
-Example are:
+WHich are:
 
 1. Have a basic conversation
 2. Search fo words in the dictionary
@@ -29,5 +27,5 @@ python bot.py
 # Buy a coffee
 
 <a href="https://www.buymeacoffee.com/mars.shall">
- <image src="/svg/bmc-icon.svg" alt="Buy me a cofee" width="100">
+ <image src="svg/bmc-icon.svg" alt="Buy me a cofee" width="100">
 </a>
