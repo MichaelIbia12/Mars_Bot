@@ -51,7 +51,7 @@ class Mars():
             randomInt = random.randrange(-1, len(response_arr))
             response = response_arr[randomInt]
             
-            if self.topic not self.fieldOfStudy:
+            if self.topic not in self.fieldOfStudy:
                 print('this is new')
             
             if 'personal' in personal_split:
