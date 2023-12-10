@@ -17,7 +17,7 @@ python bot.py
 
 - Handling of Basic Greeting
 - Can identify and search the dictionary
-- #### Comming soon
+- #### Coming soon
 
 
 # Buy a coffee
