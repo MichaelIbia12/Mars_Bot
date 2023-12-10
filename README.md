@@ -14,16 +14,20 @@ Example are:
 
 Firstly install the files in your requirements.txt file
 
-***
-py env
-***
+Secondly run 
 
-***
+```
+py env
+```
+
+Thirdly run
+
+```
 python bot.py
-***
+```
 
 # Buy a coffee
 
 <a href="https://www.buymeacoffee.com/mars.shall">
- <image src=".svg/bmc-icon.svg" alt="Buy me a cofee" width="100">
+ <image src="/svg/bmc-icon.svg" alt="Buy me a cofee" width="100">
 </a>
