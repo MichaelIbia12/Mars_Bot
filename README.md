@@ -2,27 +2,24 @@
 
 Hello, this is mars bot. he is a bot that can peform specific tasks for you.
 
-WHich are:
-
-1. Have a basic conversation
-2. Search fo words in the dictionary
-3. identify the topic (major) based on key words
-
-# Run Mars bot
-
-Firstly install the files in your requirements.txt file
-
-Secondly run 
+## Getting started
+<br>
+Activate the env file
 
 ```
-py env
+source env/bin/activate
 ```
-
-Thirdly run
-
+then
 ```
 python bot.py
 ```
+
+## Features
+
+- Handling of Basic Greeting
+- Can identify and search the dictionary
+- #### Comming soon
+
 
 # Buy a coffee
 
