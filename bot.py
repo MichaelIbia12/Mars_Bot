@@ -114,6 +114,7 @@ class Mars():
         else:
             max_score_index = main_scores.index(max_score)
             return prediction_list[max_score_index]
+        
     def information_extractor(self, txt):
         subjects = []
         for data in self.vocabulary["information_and_knowledge"][0]:
@@ -196,8 +197,7 @@ class Mars():
 m = Mars()
 
 while True:
-    #txt = input("#- ")
-    txt = "what is technology"
+    txt = input("#- ")
     print("thinking")
     m.response_engine(txt)
     break;
