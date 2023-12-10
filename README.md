@@ -1,11 +1,10 @@
 # Mars_bot 
 
-Hello, this is mars bot. he is a bot that can peform specific tasks for you.
+Hello, this is mars bot. He is a bot that can peform specific tasks for you.
 
 ## Getting started
-<br>
-Activate the env file
 
+Activate the env file
 ```
 source env/bin/activate
 ```
@@ -24,5 +23,5 @@ python bot.py
 # Buy a coffee
 
 <a href="https://www.buymeacoffee.com/mars.shall">
- <image src="svg/bmc-icon.svg" alt="Buy me a cofee" width="100">
+ <image src="svg/bmc-icon.svg" alt="Buy me a cofee" width="400">
 </a>
