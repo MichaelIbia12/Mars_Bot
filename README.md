@@ -3,13 +3,19 @@ Hello, this is mars bot. He is a bot that can peform specific tasks for you.
 
 ## Getting started
 
+Clone the repo
+
+```
+$ git clone https://github.com/MichaelIbia12/Mars_Bot.git
+```
+
 Activate the env file
 ```
-source env/bin/activate
+$ source env/bin/activate
 ```
 Then
 ```
-python bot.py
+$ python bot.py
 ```
 
 ## Features
@@ -91,4 +97,4 @@ Additional Notes
     The lemmatization process is used to simplify the input text for better pattern matching.
     
 # Buy a coffee
-[Buy a coffee 😊]("https://www.buymeacoffee.com/mars.shall")
+[☕ Buy a coffee 😊]("https://www.buymeacoffee.com/mars.shall")
