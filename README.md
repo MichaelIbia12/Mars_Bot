@@ -1,20 +1,21 @@
 # Mars_bot 
+
 Hello, this is mars bot. He is a bot that can peform specific tasks for you.
 
 ## Getting started
 
 Clone the repo
 
-```
+```bash
 $ git clone https://github.com/MichaelIbia12/Mars_Bot.git
 ```
 
 Activate the env file
-```
+```bash
 $ source env/bin/activate
 ```
 Then
-```
+```bash
 $ python bot.py
 ```
 
@@ -37,15 +38,7 @@ Creates an instance of the Mars class.
 m.response_engine(txt)
 ```
 
-This method is responsible for generating responses based on user input. It performs the following steps:
-
-    Lemmatization:
-        Uses the bulk_lemmatizer method to lemmatize the input text. Lemmatization reduces words to their base or root form.
-
-    Prediction:
-        Uses the prediction_engine method to predict the type of the user's statement based on the lemmatized input.
-        Chooses a response from the vocabulary based on the prediction.
-        Handles personal information, recommendations, and internet connectivity checks.
+This method is responsible for generating responses based on user input. 
 
 ### Prediction Engine
 
@@ -89,12 +82,7 @@ def recommendations(self):
     pass
 ```
 
-The recommendations method is currently incomplete and has a pass statement. You can extend this method to provide recommendations based on user queries or preferences.
-Additional Notes
+The recommendations method is currently incomplete and has a pass statement. You can extend this method to provide recommendations based on user queries or preferences
 
-    The chatbot uses the simple_chalk library for colored console output.
-    It checks for an internet connection at the beginning to determine whether to make online queries.
-    The lemmatization process is used to simplify the input text for better pattern matching.
-    
 # Buy a coffee
-[☕ Buy a coffee 😊]("https://www.buymeacoffee.com/mars.shall")
+[![☕ Buy a coffee 😊](https://cdn.buymeacoffee.com/assets/logos/xmas-bmc-logo-1.5.png)]
