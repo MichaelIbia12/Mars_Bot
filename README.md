@@ -84,5 +84,5 @@ def recommendations(self):
 
 The recommendations method is currently incomplete and has a pass statement. You can extend this method to provide recommendations based on user queries or preferences
 
-# Buy a coffee
-<a href="https://www.buymeacoffee.com/mars.shall"> <img src="https://cdn.buymeacoffee.com/assets/logos/xmas-bmc-logo-1.5.png" width="500" height="500" alt=" Buy a coffee"></a>
+# Buy a coffee 
+<a href="https://www.buymeacoffee.com/mars.shall"> <img src="https://cdn.buymeacoffee.com/assets/logos/xmas-bmc-logo-1.5.png" height="200" alt=" Buy a coffee"></a>
